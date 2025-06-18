@@ -1,0 +1,8 @@
+setup.py
+quickplots/__init__.py
+quickplots/plots.py
+quickplots.egg-info/PKG-INFO
+quickplots.egg-info/SOURCES.txt
+quickplots.egg-info/dependency_links.txt
+quickplots.egg-info/requires.txt
+quickplots.egg-info/top_level.txt

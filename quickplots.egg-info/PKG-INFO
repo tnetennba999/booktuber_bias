@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: quickplots
+Version: 0.1.0
+Summary: Convenient plotting classes for pandas with matplotlib and seaborn
+Author: Charlotte C
+Requires-Python: >=3.7
+Requires-Dist: pandas>=1.0
+Requires-Dist: matplotlib>=3.0
+Requires-Dist: seaborn>=0.11
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
