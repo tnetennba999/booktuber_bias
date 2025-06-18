@@ -17,50 +17,47 @@ class BasePlot:
 class LinePlot(BasePlot):
     """Simple line chart wrapper."""
     def plot(self, data: pd.DataFrame, x: str, y: str, **kwargs):
+        title = kwargs.pop('title', f"Line: {y} vs {x}")
         sns.lineplot(data=data, x=x, y=y, ax=self.ax, **kwargs)
-        self.ax.set_title(kwargs.get('title', f"Line: {y} vs {x}"), fontsize=14)
+        self.ax.set_title(title, fontsize=14)
         return self
 
 class BarPlot(BasePlot):
     """Simple bar chart wrapper."""
     def plot(self, data: pd.DataFrame, x: str, y: str, **kwargs):
+        title = kwargs.pop('title', f"Bar: {y} by {x}")
         sns.barplot(data=data, x=x, y=y, ax=self.ax, **kwargs)
-        self.ax.set_title(kwargs.get('title', f"Bar: {y} by {x}"), fontsize=14)
+        self.ax.set_title(title, fontsize=14)
         return self
 
 class ScatterPlot(BasePlot):
     """Simple scatter chart wrapper."""
     def plot(self, data: pd.DataFrame, x: str, y: str, **kwargs):
+        title = kwargs.pop('title', f"Scatter: {y} vs {x}")
         sns.scatterplot(data=data, x=x, y=y, ax=self.ax, **kwargs)
-        self.ax.set_title(kwargs.get('title', f"Scatter: {y} vs {x}"), fontsize=14)
+        self.ax.set_title(title, fontsize=14)
         return self
 
 class HistogramPlot(BasePlot):
     """Histogram wrapper."""
     def plot(self, data: pd.Series, bins: int = 10, **kwargs):
+        title = kwargs.pop('title', "Histogram")
         sns.histplot(data=data, bins=bins, ax=self.ax, **kwargs)
-        self.ax.set_title(kwargs.get('title', "Histogram"), fontsize=14)
+        self.ax.set_title(title, fontsize=14)
         return self
 
 class BoxPlot(BasePlot):
     """Boxplot wrapper."""
     def plot(self, data: pd.DataFrame, x: str = None, y: str = None, **kwargs):
+        title = kwargs.pop('title', f"BoxPlot: {y or 'values'} by {x or 'index'}")
         sns.boxplot(data=data, x=x, y=y, ax=self.ax, **kwargs)
-        self.ax.set_title(kwargs.get('title', f"BoxPlot: {y or 'values'} by {x or 'index'}"), fontsize=14)
+        self.ax.set_title(title, fontsize=14)
         return self
 
 class HeatmapPlot(BasePlot):
     """Heatmap wrapper with customizable colormap and annotations."""
     def plot(self, data: pd.DataFrame, annot: bool = False, fmt: str = ".2f", cmap: str = 'viridis', **kwargs):
-        """
-        Plot a heatmap for a DataFrame.
-
-        Parameters:
-        - data: pandas DataFrame to plot
-        - annot: whether to annotate cells
-        - fmt: annotation format
-        - cmap: color map (e.g., 'viridis', 'plasma', 'cividis')
-        """
+        title = kwargs.pop('title', "Heatmap")
         sns.heatmap(data, annot=annot, fmt=fmt, cmap=cmap, ax=self.ax, **kwargs)
-        self.ax.set_title(kwargs.get('title', "Heatmap"), fontsize=14)
+        self.ax.set_title(title, fontsize=14)
         return self
